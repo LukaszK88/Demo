@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
+            <h1 class="page-header text-center">
                 Display members per school
             </h1>
             <form action="{{ path_for('get.users') }}" method="post">
@@ -24,7 +24,7 @@
                                 </span>
                     {% endif %}
                 </div>
-                <input type="submit" value="Show members" class="btn btn-lg btn-success">
+                <input type="submit" value="Show members" class="btn btn-lg btn-info">
                 {{ csrf.field | raw }}
 
             </form>
@@ -33,7 +33,7 @@
 
             {% elseif users is empty %}
                 <h3>There is no members associated with this school</h3><br>
-                <a href="{{ path_for('add.user') }}" class="btn btn-lg btn-success">Add members</a>
+                <a href="{{ path_for('add.user') }}" class="btn btn-lg btn-info">Add members</a>
             {% else %}
                 {% include 'users/partials/users_list.twig' %}
             {% endif %}

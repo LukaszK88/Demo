@@ -8,7 +8,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: #f2f2f2;
 }
 
 @media(min-width:768px) {
@@ -24,7 +24,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: #f2f2f2;
 }
 
 .huge {
@@ -46,11 +46,18 @@ body {
 
 .top-nav {
     padding: 0 15px;
+    background-color: #3399ff;
+    color: white;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
 }
 
 .top-nav>li {
     display: inline-block;
     float: left;
+    color: white;
 }
 
 .top-nav>li>a {
@@ -122,7 +129,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        background-color: #3399ff;
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
@@ -135,8 +142,17 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #000 !important;
+        background-color: #16629d !important;
     }
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #16629d;
 }
 
 .side-nav>li>ul {
@@ -147,7 +163,7 @@ ul.alert-dropdown {
     display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
-    color: #999;
+    color: white;
 }
 
 .side-nav>li>ul>li>a:hover {
@@ -224,4 +240,12 @@ ul.alert-dropdown {
 
 .panel-yellow > a:hover {
     color: #df8a13;
+}
+
+table {
+    background-color: white;
+}
+
+.btn-info{
+    background-color:#16629d ;
 }
