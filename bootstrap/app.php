@@ -5,6 +5,9 @@
  * Date: 10/01/2017
  * Time: 14:18
  */
+
+use Respect\Validation\Validator as v;
+
 session_start();
 
 require __DIR__.'/../vendor/autoload.php';
@@ -37,6 +40,11 @@ $container['db'] = function($container) use ($capsule){
 };
 
 
+$container['flash'] = function($container){
+    return new \Slim\Flash\Messages();
+};
+
+
 $container['view'] = function($container){
     $view = new\Slim\Views\Twig(__DIR__.'/../resources/views',[
         'cache' => false,
@@ -47,12 +55,35 @@ $container['view'] = function($container){
         $container->request->getUri()
     ));
 
+    $view->getEnvironment()->addGlobal('flash',$container->flash);
+
+
     return $view;
+};
+
+$container['validator'] = function($container){
+    return new Demo\Validation\Validator;
 };
 
 $container['HomeController'] = function($container){
     return new \Demo\Controllers\HomeController($container);
 };
+
+$container['UserController'] = function($container){
+    return new \Demo\Controllers\UserController($container);
+};
+
+$container['csrf'] = function($container){
+    return new \Slim\Csrf\Guard;
+};
+
+$app->add(new \Demo\Middleware\ValidationErrorsMiddleware($container));
+$app->add(new \Demo\Middleware\OldInputMiddleware($container));
+$app->add(new \Demo\Middleware\CsrfViewMiddleware($container));
+
+$app->add($container->csrf);
+
+v::with('Demo\\Validation\\Rules');
 
 require __DIR__.'/../app/routes.php';
 

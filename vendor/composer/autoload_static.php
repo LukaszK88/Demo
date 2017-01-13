@@ -19,7 +19,13 @@ class ComposerStaticInitc9769d1a390d031b8a221dff6d40b857
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
             'Slim\\Views\\' => 11,
+            'Slim\\Flash\\' => 11,
+            'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
+        ),
+        'R' => 
+        array (
+            'Respect\\Validation\\' => 19,
         ),
         'P' => 
         array (
@@ -60,9 +66,21 @@ class ComposerStaticInitc9769d1a390d031b8a221dff6d40b857
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
+        'Slim\\Flash\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/flash/src',
+        ),
+        'Slim\\Csrf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/csrf/src',
+        ),
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Respect\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/respect/validation/library',
         ),
         'Psr\\Http\\Message\\' => 
         array (

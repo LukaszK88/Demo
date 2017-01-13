@@ -14,6 +14,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ base_url() }}/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
     <!-- Custom CSS -->
     <link href="{{ base_url() }}/css/sb-admin.css" rel="stylesheet">
 
@@ -36,7 +39,7 @@
             <div id="page-wrapper">
 
                 <div class="container-fluid">
-
+                    {% include 'templates/partials/flash.twig' %}
                     {% block content %}{% endblock %}
 
                 </div>
@@ -53,6 +56,9 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 
 </body>
 
