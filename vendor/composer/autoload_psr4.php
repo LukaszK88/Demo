@@ -20,6 +20,7 @@ return array(
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Demo\\' => array($baseDir . '/app'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
 );

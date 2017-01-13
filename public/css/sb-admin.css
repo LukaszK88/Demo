@@ -49,6 +49,10 @@ body {
     background-color: #3399ff;
     color: white;
 }
+.navbar-inverse {
+
+    border-color: white;
+}
 
 .navbar-inverse .navbar-brand {
     color: white;
