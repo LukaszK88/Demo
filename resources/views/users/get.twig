@@ -10,10 +10,10 @@
                 <div class="form-group {{ errors.school ? 'has-error': '' }}">
                     <label>Select School</label><br>
                     <select class="selectpicker" name="school" >
-
+                        <?php if (isset($example) && $example=="a") echo "selected";?>
                         {% for school in schools %}
 
-                            <option value="{{ school.id }}">{{ school.school }}</option>
+                            <option  {% if selectedSchool.school == school.school  %}selected{% endif %}  value="{{ school.id }}">{{ school.school }}</option>
 
                         {% endfor %}
 

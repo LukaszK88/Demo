@@ -20,8 +20,8 @@ class School extends Model{
     ];
 
 
-    public function users()
-    {
+    public function users(){
+        
         return $this->belongsToMany(User::class);
     }
 
