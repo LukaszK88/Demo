@@ -15,9 +15,9 @@ class RegisterUser{
 
         return[
             'email'=>v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-            'first_name'=>v::noWhitespace()->notEmpty()->alpha(),
-            'last_name'=>v::noWhitespace()->notEmpty()->alpha(),
-            'school'=>v::notEmpty(),
+            'first_name'=>v::notEmpty()->alpha('-'),
+            'last_name'=>v::notEmpty()->alpha('-'),
+            'schools'=>v::notEmpty(),
         ];
     }
 

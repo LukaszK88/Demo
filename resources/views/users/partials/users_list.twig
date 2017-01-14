@@ -1,29 +1,39 @@
+{% if users is empty %}
+   <h3>There is no members associated with this school</h3>
+{% else %}
 
-<div class="col-lg-8">
-    <h2>Members of {{ selectedSchool.school }}<i class="fa fa-users pull-right"> {{ users | length }}</i></h2>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>NR</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div class="col-lg-8">
+        {% if schoolId %}
+        <h2>Members of {{ selectedSchool.school }}
+            {% else %}
+            <h2>All Members
+            {% endif %}
+            <i class="fa fa-users pull-right"> {{ users | length }}</i></h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>NR</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-            {% for user in users %}
-                <tr>
-                    {% set counter = ( counter | default(0) ) + 1 %}
-                    <td>{{ counter }}</td>
-                    <td>{{ user.first_name }}</td>
-                    <td>{{ user.last_name }}</td>
-                    <td>{{ user.email }}</td>
-                </tr>
-            {% endfor %}
+                    {% for user in users %}
+                        <tr>
+                            {% set counter = ( counter | default(0) ) + 1 %}
+                            <td>{{ counter }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    {% endfor %}
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
     </div>
-</div>
+
+{% endif %}

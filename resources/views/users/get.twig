@@ -9,8 +9,8 @@
             <form action="{{ path_for('get.users') }}" method="post">
                 <div class="form-group {{ errors.school ? 'has-error': '' }}">
                     <label>Select School</label><br>
-                    <select class="selectpicker" name="school" >
-                        <?php if (isset($example) && $example=="a") echo "selected";?>
+                    <select class="selectpicker" name="school" onchange="this.form.submit()" title="Select a school" data-live-search="true" >
+
                         {% for school in schools %}
 
                             <option  {% if selectedSchool.school == school.school  %}selected{% endif %}  value="{{ school.id }}">{{ school.school }}</option>
@@ -24,20 +24,113 @@
                                 </span>
                     {% endif %}
                 </div>
-                <input type="submit" value="Show members" class="btn btn-lg btn-info">
+
                 {{ csrf.field | raw }}
 
             </form>
 
-            {% if schoolId is empty %}
+            <!-- Button trigger modal -->
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
+                Add members
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Add a new member
+                            </h4>
+                        </div>
 
-            {% elseif users is empty %}
-                <h3>There is no members associated with this school</h3><br>
-                <a href="{{ path_for('add.user') }}" class="btn btn-lg btn-info">Add members</a>
-            {% else %}
-                {% include 'users/partials/users_list.twig' %}
-            {% endif %}
+                        <!-- Modal Body -->
+                        <div class="modal-body">
 
+                            <form method="post" action="{{ path_for('add.user') }}" role="form">
+
+                                <div class="form-group {{ errors.first_name ? 'has-error': '' }}">
+                                    <label>First name</label>
+                                    {% if errors.first_name %}
+                                        <span class="badge"><i class="fa fa-exclamation" ></i></span>
+                                    {% endif %}
+                                    <input class="form-control" name="first_name" {% if errors %}value="{{ old.first_name }}"{% endif %} placeholder="First name" >
+
+                                    {% if errors.first_name %}
+                                        <span class="help-block">
+                                    {{ errors.first_name | first }}
+                                </span>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group {{ errors.last_name ? 'has-error': '' }}">
+                                    <label>Last name</label>
+                                    {% if errors.last_name %}
+                                        <span class="badge"><i class="fa fa-exclamation" ></i></span>
+                                    {% endif %}
+                                    <input class="form-control" name="last_name" {% if errors %}value="{{ old.last_name }}" {% endif %} placeholder="Last name">
+                                    {% if errors.last_name %}
+                                        <span class="help-block">
+                                    {{ errors.last_name | first }}
+                                </span>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group {{ errors.email ? 'has-error': '' }}">
+                                    <label>Email</label>
+                                    {% if errors.email %}
+                                        <span class="badge"><i class="fa fa-exclamation" ></i></span>
+                                    {% endif %}
+                                    <input class="form-control" name="email" {% if errors %}value="{{ old.email }}"{% endif %} placeholder="Email">
+                                    {% if errors.email %}
+                                        <span class="help-block">
+                                    {{ errors.email | first }}
+                                </span>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group {{ errors.schools ? 'has-error': '' }}">
+                                    <label>School</label>
+                                    {% if errors.schools %}
+                                        <span class="badge"><i class="fa fa-exclamation" ></i></span>
+                                    {% endif %}
+                                    <br>
+                                    <select class="selectpicker" name="schools[]" multiple data-live-search="true">
+
+                                        {% for school in schools %}
+
+                                            <option {% if school.id in old.schools and errors %} selected {% endif %} value="{{ school.id }}">{{ school.school }}</option>
+
+                                        {% endfor %}
+
+                                    </select>
+                                    {% if errors.schools %}
+                                        <span class="help-block">
+                                    {{ errors.schools | first }}
+                                </span>
+                                    {% endif %}
+                                </div>
+                                <input  type="submit" value="Add" class="btn btn-lg btn-info ">
+                                {{ csrf.field | raw }}
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+
+            {% include 'users/partials/users_list.twig' %}
 
         </div>
     </div>
