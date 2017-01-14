@@ -6,8 +6,6 @@
  * Time: 14:25
  */
 
-$app->get('/','HomeController:index')->setName('home');
-
 $app->post('/add','UserController:postAdd')->setName('add.user');
 
 $app->get('/get','UserController:getUsers')->setName('get.users');
