@@ -38,17 +38,17 @@ $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-$container['db'] = function($container) use ($capsule){
+$container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
 
 
-$container['flash'] = function($container){
+$container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };
 
 
-$container['view'] = function($container){
+$container['view'] = function ($container) {
     $view = new\Slim\Views\Twig(__DIR__.'/../resources/views',[
         'cache' => false,
     ]);
@@ -60,23 +60,22 @@ $container['view'] = function($container){
 
     $view->getEnvironment()->addGlobal('flash',$container->flash);
 
-
     return $view;
 };
 
-$container['validator'] = function($container){
+$container['validator'] = function ($container) {
     return new Demo\Validation\Validator;
 };
 
-$container['HomeController'] = function($container){
+$container['HomeController'] = function ($container) {
     return new \Demo\Controllers\HomeController($container);
 };
 
-$container['UserController'] = function($container){
+$container['UserController'] = function ($container) {
     return new \Demo\Controllers\UserController($container);
 };
 
-$container['csrf'] = function($container){
+$container['csrf'] = function ($container) {
     return new \Slim\Csrf\Guard;
 };
 

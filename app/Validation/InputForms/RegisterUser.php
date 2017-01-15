@@ -9,10 +9,10 @@ namespace Demo\Validation\InputForms;
 
 use Respect\Validation\Validator as v;
 
-class RegisterUser{
-
-    public static function rules(){
-
+class RegisterUser
+{
+    public static function rules()
+    {
         return[
             'email'=>v::noWhitespace()->notEmpty()->email()->emailAvailable(),
             'first_name'=>v::notEmpty()->alpha('-'),
@@ -20,5 +20,4 @@ class RegisterUser{
             'schools'=>v::notEmpty(),
         ];
     }
-
 }

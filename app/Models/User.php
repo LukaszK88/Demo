@@ -11,8 +11,8 @@ use Demo\Models\School;
 use Demo\Models\Records;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model{
-
+class User extends Model
+{
     protected $table = 'users';
 
     protected $fillable = [
@@ -21,14 +21,13 @@ class User extends Model{
         'email'
     ];
 
-    public function record(){
-
+    public function record()
+    {
         return $this->hasMany(Records::class);
     }
 
-    public function schools(){
-
+    public function schools()
+    {
         return $this->belongsToMany(School::class);
     }
-    
 }

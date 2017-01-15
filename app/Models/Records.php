@@ -7,12 +7,11 @@
  */
 namespace Demo\Models;
 
-
 use Demo\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Records extends Model{
-
+class Records extends Model
+{
     protected $table = 'school_user';
 
     protected $fillable = [
@@ -20,10 +19,8 @@ class Records extends Model{
         'school_id'
     ];
 
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    
-
 }

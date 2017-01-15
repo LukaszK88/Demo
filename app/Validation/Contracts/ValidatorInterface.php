@@ -8,8 +8,8 @@
 
 namespace Demo\Validation\Contracts ;
 
-interface ValidatorInterface{
-
+interface ValidatorInterface
+{
     public function validate($request,array $rules);
 
     public function fails();

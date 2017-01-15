@@ -11,17 +11,16 @@ use Demo\Models\User;
 use Demo\Models\Records;
 use Illuminate\Database\Eloquent\Model;
 
-class School extends Model{
-
+class School extends Model
+{
     protected $table = 'schools';
 
     protected $fillable = [
         'school'
     ];
 
-
-    public function users(){
-        
+    public function users()
+    {
         return $this->belongsToMany(User::class);
     }
 

@@ -8,20 +8,20 @@
 namespace Demo\Controllers;
 
 use Demo\Models\School;
-
 use Demo\Models\User;
 use Demo\Validation\InputForms\RegisterUser;
 use Demo\Validation\InputForms\GetUsers;
 use Slim\Views\Twig as View;
 
-class UserController extends Controller{
+class UserController extends Controller
+{
 
-    public function postAdd($request,$response){
+    public function postAdd($request, $response)
+    {
 
-        $validation = $this->validator->validate($request,RegisterUser::rules());
+        $validation = $this->validator->validate($request, RegisterUser::rules());
 
-        if($validation->fails() ){
-
+        if ($validation->fails()) {
             return $response->withRedirect($this->router->pathFor('get.users'));
         }
 
@@ -31,7 +31,7 @@ class UserController extends Controller{
             'email' => $request->getParam('email')
         ]);
 
-        foreach ($request->getParam('schools') as $schoolId){
+        foreach ($request->getParam('schools') as $schoolId) {
             $user->record()->create([
                 'school_id' => $schoolId
             ]);
@@ -43,8 +43,8 @@ class UserController extends Controller{
         return $response->withRedirect($this->router->pathFor('get.users'));
     }
 
-    public function getUsers($request,$response){
-        
+    public function getUsers($request, $response)
+    {
         $schools = School::all();
 
         $users = User::all();
@@ -55,8 +55,8 @@ class UserController extends Controller{
         ]);
     }
 
-    public function getUsersBySchool($request,$response,$schoolId = ''){
-        
+    public function getUsersBySchool($request, $response, $schoolId = '')
+    {
         $schools = School::all();
 
         $selectSchoolById = School::where('id', $schoolId)->first();
@@ -65,29 +65,23 @@ class UserController extends Controller{
 
         $users = $school->users;
                 
-
         return $this->view->render($response,'users/get.twig',[
             'schools' => $schools,
             'schoolId' => $schoolId,
             'selectedSchool' => $selectSchoolById,
             'users' => $users
         ]);
-
-
     }
 
-    public function postUsers($request,$response){
-
+    public function postUsers($request,$response)
+    {
         $validation = $this->validator->validate($request,GetUsers::rules());
 
-        if($validation->fails() ){
-
+        if ($validation->fails()) {
             return $response->withRedirect($this->router->pathFor('get.users'));
         }
 
         return $response->withRedirect($this->router->pathFor('get.usersBySchool',['schoolId' => $request->getParam('school')]));
-
-    
     }
 
 }

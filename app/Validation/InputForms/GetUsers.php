@@ -9,13 +9,12 @@ namespace Demo\Validation\InputForms;
 
 use Respect\Validation\Validator as v;
 
-class GetUsers{
-
-    public static function rules(){
-
+class GetUsers
+{
+    public static function rules()
+    {
         return[
             'school'=>v::notEmpty(),
         ];
     }
-
 }
