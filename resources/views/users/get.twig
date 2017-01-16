@@ -64,7 +64,7 @@
 
                                     {% if errors.first_name %}
                                         <span class="help-block">
-                                    {{ errors.first_name | first }}
+                                    {{ errors.first_name | first | replace ({'_': " "})  }}
                                 </span>
                                     {% endif %}
                                 </div>
@@ -77,7 +77,7 @@
                                     <input class="form-control" name="last_name" {% if errors %}value="{{ old.last_name }}" {% endif %} placeholder="Last name">
                                     {% if errors.last_name %}
                                         <span class="help-block">
-                                    {{ errors.last_name | first }}
+                                    {{ errors.last_name | first | replace ({'_': " "}) }}
                                 </span>
                                     {% endif %}
                                 </div>

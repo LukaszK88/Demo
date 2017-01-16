@@ -15,6 +15,7 @@ class OldInputMiddleware extends Middleware
         $this->container->view->getEnvironment()->addGlobal('old', $_SESSION['old']);
 
         $_SESSION['old'] = $request->getParams();
+        
 
         $response = $next($request, $response);
 

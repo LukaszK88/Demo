@@ -8,7 +8,7 @@
 
 $app->post('/add','UserController:postAdd')->setName('add.user');
 
-$app->get('/get','UserController:getUsers')->setName('get.users');
-$app->post('/get','UserController:postUsers');
+$app->get('/','UserController:getUsers')->setName('get.users');
+$app->post('/','UserController:postUsers');
 
 $app->get('/get/{schoolId}','UserController:getUsersBySchool')->setName('get.usersBySchool');
